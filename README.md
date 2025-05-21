@@ -28,5 +28,7 @@ bash run/train_gcn.sh
 ## DeepGate3 Encoder
 bash run/train_dg3.sh
 
+# Analyze attention
+python3  analyze_attn.py
 
 
