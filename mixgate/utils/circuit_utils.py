@@ -1,7 +1,6 @@
 '''
 Utility functions for circuit: including random pattern generation, logic simulator, \
     reconvergence identification, 
-Author: Sadaf Khan, Zhengyuan Shi and Min Li.
 '''
 import torch
 from numpy.random import randint
@@ -178,7 +177,6 @@ def obs_prob(x, r, y, input_signals):
 def simulator(x_data, PI_indexes, level_list, fanin_list, num_patterns):
     '''
        Logic simulator
-       Modified by Zhengyuan 27-09-2021
        ...
        Parameters:
            x_data : list(list((str, int, int))), the node feature matrix with shape [num_nodes, num_node_features], the current dimension of num_node_features is 3, wherein 0th - node_name defined in bench (str); 1st - integer index for the gate type; 2nd - logic level; 3rd - C1, 4th - C0, 5th - Obs.
@@ -292,8 +290,6 @@ def feature_generation(data, gate_to_index):
     '''
         A pre-processing function to handle with the modified `.bench` format files.
         Will generate the necessary attributes, adjacency matrix, edge connectivity matrix, etc.
-        Modified by Zhengyuan 27-09-2021
-        Modified by Zhengyuan 13-10-2021
             fixed bug: the key word of gates should be 'OR(' instead of 'OR',
             because variable name may be 'MEMORY' has 'OR'
         ...
@@ -547,7 +543,6 @@ def generate_sub_circuit(x_data, min_circuit_level, max_circuit_level, level_lst
 def generate_prob_cont(x_data, PI_indexes, level_list, fanin_list):
     '''
     Function to calculate Controlability values, i.e. C1 and C0 for the nodes.
-    Modified by Zhengyuan, 27-09-2021
     ...
     Parameters:
         x_data : list(list((str, int, int))), the node feature matrix with shape [num_nodes, num_node_features], the current dimension of num_node_features is 3, wherein 0th - node_name defined in bench (str); 1st - integer index for the gate type; 2nd - logic level.
@@ -582,7 +577,6 @@ def generate_prob_cont(x_data, PI_indexes, level_list, fanin_list):
 def generate_prob_obs(x_data, level_list, fanin_list, fanout_list):
     '''
         Function to calculate Observability values, i.e. CO.
-        Modified by Zhengyuan, 27-09-2021
         ...
         Parameters:
             x_data : list(list((str, int, int))), the node feature matrix with shape [num_nodes, num_node_features], the current dimension of num_node_features is 3, wherein 0th - node_name defined in bench (str); 1st - integer index for the gate type; 2nd - logic level.
@@ -630,7 +624,6 @@ def identify_reconvergence(x_data, level_list, fanin_list, fanout_list):
     '''
     Function to identify the reconvergence nodes in the given circuit.
     The algorithm is done under the principle that we only consider the minimum reconvergence structure.
-    Modified by Zhengyuan 27-09-2021
     ...
     Parameters:
         x_data : list(list((str, int, int))), the node feature matrix with shape [num_nodes, num_node_features], the current dimension of num_node_features is 3, wherein 0th - node_name defined in bench (str); 1st - integer index for the gate type; 2nd - logic level; 3rd - C1, 4th - C0, 5th - Obs.
@@ -948,8 +941,6 @@ def feature_gen_connect(data, gate_to_index):
     '''
         A pre-processing function to handle with the modified `.bench` format files.
         Will generate the necessary attributes, adjacency matrix, edge connectivity matrix, etc.
-        Modified by Stone 27-09-2021
-        Modified by Stone 13-10-2021
             fixed bug: the key word of gates should be 'OR(' instead of 'OR',
             because variable name may be 'MEMORY' has 'OR'
         ...
